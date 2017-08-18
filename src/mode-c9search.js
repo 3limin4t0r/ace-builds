@@ -108,6 +108,11 @@ var C9SearchHighlightRules = function() {
                         });
                     }
                     
+                    if (replace) {
+                        search = replace;
+                        options = "";
+                    }
+                    
                     if (search) {
                         if (!/regex/.test(options))
                             search = lang.escapeRegExp(search);

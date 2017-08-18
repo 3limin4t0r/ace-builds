@@ -498,14 +498,7 @@ var LiquidLangHighlightRules = require("./liquid_highlight_rules").LiquidLangHig
 var MatchingBraceOutdent = require("./matching_brace_outdent").MatchingBraceOutdent;
 var LiquidBehaviour = require("./behaviour/liquid").LiquidBehaviour;
 
-var Mode = function() {
-    this.HighlightRules = LiquidHighlightRules;
-    this.$outdent = new MatchingBraceOutdent();
-    this.$behaviour = this.$defaultBehaviour;
-};
-oop.inherits(Mode, TextMode);
 
-(function() {
 
 var LiquidMode = function() {
     this.LiquidLangHighlightRules = LiquidLangHighlightRules;
@@ -517,13 +510,7 @@ oop.inherits(LiquidMode, TextMode);
 }).call(LiquidMode.prototype);
 exports.ModeInline = LiquidMode;
 
-        var tokenizedLine = this.getTokenizer().getLineTokens(line, state);
-        var tokens = tokenizedLine.tokens;
-        var endState = tokenizedLine.state;
 
-        if (tokens.length && tokens[tokens.length-1].type == "comment") {
-            return indent;
-        }
 
 var Mode = function() {
     TextMode.call(this);

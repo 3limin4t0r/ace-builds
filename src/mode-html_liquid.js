@@ -298,11 +298,11 @@ var JavaScriptHighlightRules = function(options) {
                 regex : '"(?=.)',
                 next  : "qqstring"
             }, {
-                token : "constant.numeric", // hexadecimal, octal and binary
-                regex : /0(?:[xX][0-9a-fA-F]+|[oO][0-7]+|[bB][01]+)\b/
+                token : "constant.numeric", // hex
+                regex : /0(?:[xX][0-9a-fA-F]+|[bB][01]+)\b/
             }, {
-                token : "constant.numeric", // decimal integers and floats
-                regex : /(?:\d\d*(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+\b)?/
+                token : "constant.numeric", // float
+                regex : /[+-]?\d[\d_]*(?:(?:\.\d*)?(?:[eE][+-]?\d+)?)?\b/
             }, {
                 token : [
                     "storage.type", "punctuation.operator", "support.function",
@@ -371,9 +371,6 @@ var JavaScriptHighlightRules = function(options) {
                 token : "punctuation.operator",
                 regex : /[.](?![.])/,
                 next  : "property"
-            }, {
-                token : "storage.type",
-                regex : /=>/
             }, {
                 token : "keyword.operator",
                 regex : /--|\+\+|\.{3}|===|==|=|!=|!==|<+=?|>+=?|!|&&|\|\||\?:|[!$%&*+\-~\/^]=?/,
@@ -2737,14 +2734,7 @@ var LiquidLangHighlightRules = require("./liquid_highlight_rules").LiquidLangHig
 var MatchingBraceOutdent = require("./matching_brace_outdent").MatchingBraceOutdent;
 var LiquidBehaviour = require("./behaviour/liquid").LiquidBehaviour;
 
-var Mode = function() {
-    this.HighlightRules = LiquidHighlightRules;
-    this.$outdent = new MatchingBraceOutdent();
-    this.$behaviour = this.$defaultBehaviour;
-};
-oop.inherits(Mode, TextMode);
 
-(function() {
 
 var LiquidMode = function() {
     this.LiquidLangHighlightRules = LiquidLangHighlightRules;
@@ -2756,13 +2746,7 @@ oop.inherits(LiquidMode, TextMode);
 }).call(LiquidMode.prototype);
 exports.ModeInline = LiquidMode;
 
-        var tokenizedLine = this.getTokenizer().getLineTokens(line, state);
-        var tokens = tokenizedLine.tokens;
-        var endState = tokenizedLine.state;
 
-        if (tokens.length && tokens[tokens.length-1].type == "comment") {
-            return indent;
-        }
 
 var Mode = function() {
     TextMode.call(this);

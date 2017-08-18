@@ -18,23 +18,7 @@ var LatexHighlightRules = function() {
             regex : "(\\\\(?:label|v?ref|cite(?:[^{]*)))(?:({)([^}]*)(}))?"
         }, {
             token : ["storage.type", "lparen", "variable.parameter", "rparen"],
-            regex : "(\\\\begin)({)(verbatim)(})",
-            next : "verbatim"
-        },  {
-            token : ["storage.type", "lparen", "variable.parameter", "rparen"],
-            regex : "(\\\\begin)({)(lstlisting)(})",
-            next : "lstlisting"
-        },  {
-            token : ["storage.type", "lparen", "variable.parameter", "rparen"],
-            regex : "(\\\\(?:begin|end))({)([\\w*]*)(})"
-        }, {
-            token : "storage.type",
-            regex : /\\verb\b\*?/,
-            next : [{
-                token : ["keyword.operator", "string", "keyword.operator"],
-                regex : "(.)(.*?)(\\1|$)|",
-                next : "start"
-            }]
+            regex : "(\\\\(?:begin|end))({)(\\w*)(})"
         }, {
             token : "storage.type",
             regex : "\\\\[a-zA-Z]+"
@@ -68,24 +52,9 @@ var LatexHighlightRules = function() {
             next : "start" 
         }, {
             defaultToken : "string"
-        }],
-        "verbatim": [{
-            token : ["storage.type", "lparen", "variable.parameter", "rparen"],
-            regex : "(\\\\end)({)(verbatim)(})",
-            next : "start"
-        }, {
-            defaultToken : "text"
-        }],
-        "lstlisting": [{
-            token : ["storage.type", "lparen", "variable.parameter", "rparen"],
-            regex : "(\\\\end)({)(lstlisting)(})",
-            next : "start"
-        }, {
-            defaultToken : "text"
         }]
+
     };
-    
-    this.normalizeRules();
 };
 oop.inherits(LatexHighlightRules, TextHighlightRules);
 

@@ -88,6 +88,7 @@ var supportedModes = {
     HTML:        ["html|htm|xhtml"],
     HTML_Elixir: ["eex|html.eex"],
     HTML_Ruby:   ["erb|rhtml|html.erb"],
+    HTML_Liquid: ["html.liquid|liquid"],
     INI:         ["ini|conf|cfg|prefs"],
     Io:          ["io"],
     Jack:        ["jack"],
@@ -102,7 +103,7 @@ var supportedModes = {
     Kotlin:      ["kt|kts"],
     LaTeX:       ["tex|latex|ltx|bib"],
     LESS:        ["less"],
-    Liquid:      ["liquid"],
+    Liquid:      ["txt.liquid|text.liquid|liquid"],
     Lisp:        ["lisp"],
     LiveScript:  ["ls"],
     LogiQL:      ["logic|lql"],
@@ -173,6 +174,7 @@ var supportedModes = {
     XML:         ["xml|rdf|rss|wsdl|xslt|atom|mathml|mml|xul|xbl|xaml"],
     XQuery:      ["xq"],
     YAML:        ["yaml|yml"],
+    YAML_liquid: ["yaml.liquid|yml.liquid|liquid"],
     Django:      ["html"]
 };
 
@@ -184,6 +186,8 @@ var nameOverrides = {
     coffee: "CoffeeScript",
     HTML_Ruby: "HTML (Ruby)",
     HTML_Elixir: "HTML (Elixir)",
+    HTML_Liquid: "HTML (Liquid)",
+    YAML_liquid: "YAML (Liquid)",
     FTL: "FreeMarker"
 };
 var modesByName = {};
